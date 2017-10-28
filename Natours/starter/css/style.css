@@ -6,3 +6,196 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* basis resets in css
+    normalize.css is no longer required as browers are now more aligned to each other
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* properties to be inherited are usually put in body especially font properties */
+body {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #777;
+  line-height: 1.7;
+  padding: 30px;
+}
+
+.header {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 131, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-position: top;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  height: 95vh;
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 35px;
+  left: 35px;
+}
+
+.logo {
+  height: 40px;
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* to hide the backface of transfromed element. In this case
+  its the header-primary-main and sub are the transformed elements
+   */
+  backface-visibility: hidden;
+  margin-bottom: 20px;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 150%;
+  font-weight: 300;
+  letter-spacing: 25px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 50%;
+  font-weight: 700;
+  letter-spacing: 10px;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveBottomUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*  STYLING BUTTONS */
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  border-radius: 50px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  font-size: 110%;
+  padding: 10px 25px;
+  /* for :after pseodo element's position:absolute */
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.1s;
+}
+
+/* on hover the button should pull up and shadow should enlarge and
+shallow */
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(77, 49, 49, 0.2);
+}
+
+/* on click it should move away and shadow should diminish
+as if I am push it towards a wall */
+.btn:active {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    /* we don't need any content here. Hence blank*/
+    content: "";
+    border-radius: 50px;
+    /* after pseudo element's parent is .btn which is inline block*/
+    display: inline-block;
+    /* to match height and width of parent btn */
+    height: 100%;
+    width: 100%;
+    /* to hide this element below btn */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.5) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animation {
+    animation-name: moveBottomUp;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-delay: 0.75s;
+    /* really important propetry
+    sincie a delay is applied here, below property
+    Defines what values are applied by the animation outside the time it is executing.
+    backwards : appplies first property defined in @keyframe
+    */
+    animation-fill-mode: backwards;
+}
