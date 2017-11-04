@@ -41,13 +41,13 @@ body {
   position: relative;
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 35px;
   left: 35px;
 }
 
-.logo {
+.header__logo {
   height: 40px;
 }
 
@@ -68,7 +68,7 @@ body {
   margin-bottom: 20px;
 }
 
-.heading-primary-main {
+.heading-primary__main {
   display: block;
   font-size: 150%;
   font-weight: 300;
@@ -78,7 +78,7 @@ body {
   animation-timing-function: ease-in;
 }
 
-.heading-primary-sub {
+.heading-primary__sub {
   display: block;
   font-size: 50%;
   font-weight: 700;
@@ -156,7 +156,7 @@ as if I am push it towards a wall */
     transform: translateY(-1px);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -178,7 +178,7 @@ as if I am push it towards a wall */
     transition: all 0.5s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -187,7 +187,7 @@ as if I am push it towards a wall */
     opacity: 0;
 }
 
-.btn-animation {
+.btn--animated {
     animation-name: moveBottomUp;
     animation-duration: 1s;
     animation-timing-function: ease-in;
