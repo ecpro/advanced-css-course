@@ -6,21 +6,17 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
-
 /* basis resets in css
     normalize.css is no longer required as browers are now more aligned to each other
 */
-
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 html {
   /* 62.5% = 10px */
-  font-size: 62.5%;
-}
+  font-size: 62.5%; }
 
 /* properties to be inherited are usually put in body especially font properties */
 body {
@@ -28,49 +24,39 @@ body {
   font-weight: 400;
   color: #777;
   line-height: 1.7;
-  padding: 3rem;
-}
+  padding: 3rem; }
 
 .header {
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 131, 0.8)
-    ),
-    url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
   background-position: top;
   background-size: cover;
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   height: 95vh;
-  position: relative;
-}
+  position: relative; }
 
 .header__logo-box {
   position: absolute;
   top: 3.5rem;
-  left: 3.5rem;
-}
+  left: 3.5rem; }
 
 .header__logo {
-  height: 4rem;
-}
+  height: 4rem; }
 
 .text-box {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-}
+  text-align: center; }
+
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
   /* to hide the backface of transfromed element. In this case
-  its the header-primary-main and sub are the transformed elements
-   */
+    its the header-primary-main and sub are the transformed elements
+     */
   backface-visibility: hidden;
-  margin-bottom: 2rem;
-}
+  margin-bottom: 2rem; }
 
 .heading-primary__main {
   display: block;
@@ -79,8 +65,7 @@ body {
   letter-spacing: 2.5rem;
   animation-name: moveInLeft;
   animation-duration: 1s;
-  animation-timing-function: ease-in;
-}
+  animation-timing-function: ease-in; }
 
 .heading-primary__sub {
   display: block;
@@ -89,47 +74,35 @@ body {
   letter-spacing: 0.9rem;
   animation-name: moveInRight;
   animation-duration: 1s;
-  animation-timing-function: ease-out;
-}
+  animation-timing-function: ease-out; }
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100%);
-  }
+    transform: translateX(-100%); }
   80% {
-    transform: translateX(10px);
-  }
+    transform: translateX(10px); }
   100% {
     opacity: 1;
-    transform: translateX(0);
-  }
-}
+    transform: translateX(0); } }
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100%);
-  }
+    transform: translateX(100%); }
   80% {
-    transform: translateX(-10px);
-  }
+    transform: translateX(-10px); }
   100% {
     opacity: 1;
-    transform: translateX(0);
-  }
-}
+    transform: translateX(0); } }
 
 @keyframes moveBottomUp {
   0% {
     opacity: 0;
-    transform: translateY(100%);
-  }
+    transform: translateY(100%); }
   100% {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
+    transform: translateY(0); } }
 
 /*  STYLING BUTTONS */
 .btn:link,
@@ -143,27 +116,23 @@ body {
   position: relative;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all 0.1s;
-}
+  transition: all 0.1s; }
 
 /* on hover the button should pull up and shadow should enlarge and
-shallow */
+  shallow */
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 2rem 5rem rgba(77, 49, 49, 0.2);
-}
+  box-shadow: 0 2rem 5rem rgba(77, 49, 49, 0.2); }
 
 /* on click it should move away and shadow should diminish
-as if I am push it towards a wall */
+  as if I am push it towards a wall */
 .btn:active {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  transform: translateY(-0.1rem);
-}
+  transform: translateY(-0.1rem); }
 
 .btn--white {
   background-color: #fff;
-  color: #777;
-}
+  color: #777; }
 
 .btn::after {
   /* we don't need any content here. Hence blank*/
@@ -179,17 +148,14 @@ as if I am push it towards a wall */
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all 0.5s;
-}
+  transition: all 0.5s; }
 
 .btn--white::after {
-  background-color: #fff;
-}
+  background-color: #fff; }
 
 .btn:hover::after {
   transform: scaleX(1.5) scaleY(1.6);
-  opacity: 0;
-}
+  opacity: 0; }
 
 .btn--animated {
   animation-name: moveBottomUp;
@@ -197,9 +163,8 @@ as if I am push it towards a wall */
   animation-timing-function: ease-in;
   animation-delay: 0.75s;
   /* really important propetry
-    sincie a delay is applied here, below property
-    Defines what values are applied by the animation outside the time it is executing.
-    backwards : appplies first property defined in @keyframe
-    */
-  animation-fill-mode: backwards;
-}
+      sincie a delay is applied here, below property
+      Defines what values are applied by the animation outside the time it is executing.
+      backwards : appplies first property defined in @keyframe
+      */
+  animation-fill-mode: backwards; }
