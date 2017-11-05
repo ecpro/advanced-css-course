@@ -1,80 +1,23 @@
 /*
 COLORS:
-
 Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
-
 */
+/* css grid variables */
 /* basis resets in css
     normalize.css is no longer required as browers are now more aligned to each other
 */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: inherit; }
 
 html {
   /* 62.5% = 10px */
   font-size: 62.5%; }
-
-/* properties to be inherited are usually put in body especially font properties */
-body {
-  font-family: Lato, sans-serif;
-  font-weight: 400;
-  color: #777;
-  line-height: 1.7;
-  padding: 3rem; }
-
-.header {
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-position: top;
-  background-size: cover;
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-  height: 95vh;
-  position: relative; }
-
-.header__logo-box {
-  position: absolute;
-  top: 3.5rem;
-  left: 3.5rem; }
-
-.header__logo {
-  height: 4rem; }
-
-.text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* to hide the backface of transfromed element. In this case
-    its the header-primary-main and sub are the transformed elements
-     */
-  backface-visibility: hidden;
-  margin-bottom: 2rem; }
-
-.heading-primary__main {
-  display: block;
-  font-size: 5rem;
-  font-weight: 300;
-  letter-spacing: 2.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-in; }
-
-.heading-primary__sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.9rem;
-  animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
 
 @keyframes moveInLeft {
   0% {
@@ -104,67 +47,243 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
-/*  STYLING BUTTONS */
-.btn:link,
-.btn:visited {
-  display: inline-block;
-  border-radius: 5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  font-size: 1.5rem;
-  padding: 1rem 2.5rem;
-  /* for :after pseodo element's position:absolute */
-  position: relative;
+/* properties to be inherited are usually put in body especially font properties */
+body {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  color: #777;
+  line-height: 1.7;
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.heading-primary {
+  color: #fff;
   text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.1s; }
+  /* to hide the backface of transfromed element. In this case
+      its the header-primary-main and sub are the transformed elements
+       */
+  backface-visibility: hidden;
+  margin-bottom: 2rem; }
+  .heading-primary__main {
+    display: block;
+    font-size: 5rem;
+    font-weight: 300;
+    letter-spacing: 2.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in; }
+  .heading-primary__sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.9rem;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
 
-/* on hover the button should pull up and shadow should enlarge and
-  shallow */
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 2rem 5rem rgba(77, 49, 49, 0.2); }
-
-/* on click it should move away and shadow should diminish
-  as if I am push it towards a wall */
-.btn:active {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  transform: translateY(-0.1rem); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-.btn::after {
-  /* we don't need any content here. Hence blank*/
-  content: "";
-  border-radius: 5rem;
-  /* after pseudo element's parent is .btn which is inline block*/
+.heading-secondary {
   display: inline-block;
-  /* to match height and width of parent btn */
-  height: 100%;
-  width: 100%;
-  /* to hide this element below btn */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.5s; }
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.2s; }
+  .heading-secondary:hover {
+    transform: skew(10deg, 10deg); }
 
-.btn--white::after {
-  background-color: #fff; }
+.heading-tertiary {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase; }
 
-.btn:hover::after {
-  transform: scaleX(1.5) scaleY(1.6);
-  opacity: 0; }
+.paragraph {
+  font-size: 1.5rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 4rem; }
 
-.btn--animated {
-  animation-name: moveBottomUp;
-  animation-duration: 1s;
-  animation-timing-function: ease-in;
-  animation-delay: 0.75s;
-  /* really important propetry
-      sincie a delay is applied here, below property
-      Defines what values are applied by the animation outside the time it is executing.
-      backwards : appplies first property defined in @keyframe
-      */
-  animation-fill-mode: backwards; }
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-small {
+  margin-bottom: 2rem; }
+
+/*  STYLING BUTTONS */
+.btn {
+  /* on hover the button should pull up and shadow should enlarge and
+    shallow */
+  /* on click it should move away and shadow should diminish
+      as if I am push it towards a wall */ }
+  .btn:link, .btn:visited {
+    display: inline-block;
+    border-radius: 5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    font-size: 1.8rem;
+    padding: 1rem 2.5rem;
+    /* for :after pseodo element's position:absolute */
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.1s; }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2rem 5rem rgba(77, 49, 49, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.5) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-0.1rem); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    /* we don't need any content here. Hence blank*/
+    content: "";
+    border-radius: 5rem;
+    /* after pseudo element's parent is & which is inline block*/
+    display: inline-block;
+    /* to match height and width of parent btn */
+    height: 100%;
+    width: 100%;
+    /* to hide this element below btn */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.5s; }
+  .btn--animated {
+    animation-name: moveBottomUp;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-delay: 0.75s;
+    /* really important propetry
+          sincie a delay is applied here, below property
+          Defines what values are applied by the animation outside the time it is executing.
+          backwards : appplies first property defined in @keyframe
+          */
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.8rem;
+  display: inline-block;
+  text-decoration: none;
+  color: #55c57a;
+  padding: 2px 4px;
+  border-bottom: 1px solid #55c57a;
+  transition: all 0.2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 3px 4px 4rem #777;
+  transform: translateY(-4px); }
+
+.btn-text:active {
+  transform: translateY(2px);
+  box-shadow: 1px 2px 1rem #777; }
+
+.composition {
+  position: relative;
+  /* cool trick to shrink non hovered images */ }
+  .composition__photo {
+    box-shadow: 0rem 1.5rem 4rem rgba(0, 0, 0, 0.8);
+    border-radius: 0.2rem;
+    display: block;
+    width: 55%;
+    position: absolute;
+    transition: all 0.2s; }
+    .composition__photo--p1 {
+      top: -2rem;
+      left: 0; }
+      .composition__photo--p1:hover {
+        transform: scale(1.2);
+        z-index: 999;
+        padding: 1rem;
+        border: 0.5rem solid #55c57a;
+        border-radius: 0.5rem;
+        box-shadow: 0rem 1.5rem 8rem rgba(0, 0, 0, 0.4); }
+    .composition__photo--p2 {
+      top: 3rem;
+      left: 40%; }
+      .composition__photo--p2:hover {
+        transform: scale(1.2);
+        z-index: 999;
+        padding: 1rem;
+        border: 0.5rem solid #55c57a;
+        border-radius: 0.5rem;
+        box-shadow: 0rem 1.5rem 8rem rgba(0, 0, 0, 0.4); }
+    .composition__photo--p3 {
+      top: 15rem;
+      left: 10%;
+      z-index: 1; }
+      .composition__photo--p3:hover {
+        transform: scale(1.2);
+        z-index: 999;
+        padding: 1rem;
+        border: 0.5rem solid #55c57a;
+        border-radius: 0.5rem;
+        box-shadow: 0rem 1.5rem 8rem rgba(0, 0, 0, 0.4); }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.8); }
+
+.header {
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-position: top;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  height: 95vh;
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 3.5rem;
+    left: 3.5rem; }
+  .header__logo {
+    height: 4rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 6rem; }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 8rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 1 * 8rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 8rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 8rem) / 3) + 8rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 8rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 8rem) / 4) + 8rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 8rem) / 4) + 2 * 8rem); }
+
+.section-about {
+  margin-top: -24vh;
+  background-color: #f7f7f7;
+  padding: 20rem 0; }

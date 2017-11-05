@@ -5,7 +5,7 @@
     display: inline-block;
     border-radius: 5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    font-size: 1.5rem;
+    font-size: $default-font-size;
     padding: 1rem 2.5rem;
     /* for :after pseodo element's position:absolute */
     position: relative;
@@ -68,5 +68,29 @@
           backwards : appplies first property defined in @keyframe
           */
     animation-fill-mode: backwards;
+  }
+}
+
+.btn-text {
+  &:link, &:visited {
+    font-size: $default-font-size;
+    display: inline-block;
+    text-decoration: none;
+    color: $color-primary;
+    padding: 2px 4px;
+    border-bottom: 1px solid $color-primary;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 3px 4px 4rem $color-grey;
+    transform: translateY(-4px);
+  }
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 1px 2px 1rem $color-grey;
   }
 }
