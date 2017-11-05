@@ -1,0 +1,39 @@
+/* properties to be inherited are usually put in body especially font properties */
+body {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  color: $color-grey;
+  line-height: 1.7;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  /* to hide the backface of transfromed element. In this case
+      its the header-primary-main and sub are the transformed elements
+       */
+  backface-visibility: hidden;
+  margin-bottom: 2rem;
+
+  &__main {
+    display: block;
+    font-size: 5rem;
+    font-weight: 300;
+    letter-spacing: 2.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+  }
+
+  &__sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.9rem;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+}

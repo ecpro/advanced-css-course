@@ -1,0 +1,15 @@
+/* basis resets in css
+    normalize.css is no longer required as browers are now more aligned to each other
+*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* 62.5% = 10px */
+  font-size: 62.5%;
+}
